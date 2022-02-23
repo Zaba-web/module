@@ -1,0 +1,3 @@
+<config>
+    <preference for="\Magento\Checkout\Model\Cart" type="\Myv\GiftPreference\Model\CartWithGift" />
+</config>

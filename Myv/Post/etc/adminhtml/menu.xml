@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add 
+            id="Myv_Post::post" 
+            title="Posts" 
+            module="Myv_Post" 
+            sortOrder="41" 
+            resource="Myv_Post::general"
+        />
+            <add 
+                id="Myv_Post::post_list" 
+                title="Post List" 
+                module="Myv_Post" 
+                resource="Myv_Post::general" 
+                parent="Myv_Post::post"
+                action="posts/overview/index"
+            />
+            <add 
+                id="Myv_Post::add"
+                title="Add Post"
+                module="Myv_Post"
+                resource="Myv_Post::general"
+                parent="Myv_Post::post"
+                action="posts/create/index"
+            />
+    </menu>
+</config>

@@ -1,0 +1,21 @@
+<?php 
+    $post = $block->getPost();
+?>
+
+<div>
+    <h2><?=$post->getTitle()?></h2>
+    <small>
+        Written by: 
+        <b>
+            <?=$post->getAuthor()?>
+        </b> 
+        at 
+        <i>
+            <?=$post->getDate()?>
+        </i>
+    </small>
+    <br><br>
+    <p>
+        <?=$post->getContent()?>
+    </p>
+</div>

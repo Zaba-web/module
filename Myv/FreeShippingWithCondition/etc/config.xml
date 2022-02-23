@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <customshipping>
+                <active>1</active>
+                <title_if_free>Free</title_if_free>
+                <title_if_not_free>Default</title_if_not_free>
+                <name>Shipping Method name</name>
+                <cost>0</cost>
+                <sallowspecific>0</sallowspecific>
+                <sort_order>15</sort_order>
+                <min_for_free>100</min_for_free>
+                <model>Myv\FreeShippingWithCondition\Model\Carrier\FreeShippingWithCondition</model>
+            </customshipping>
+        </carriers>
+    </default>
+</config>

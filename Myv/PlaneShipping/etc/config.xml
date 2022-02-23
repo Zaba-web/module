@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <planeshipping>
+                <active>1</active>
+                <plane_shipment_title>By Plane</plane_shipment_title>
+                <plane_shipment_name>Shipping Method name</plane_shipment_name>
+                <base_cost>20</base_cost>
+                <sallowspecific>0</sallowspecific>
+                <sort_order>15</sort_order>
+                <min_for_free>100</min_for_free>
+                <model>Myv\PlaneShipping\Model\Carrier\PlaneShipping</model>
+            </planeshipping>
+        </carriers>
+    </default>
+</config>

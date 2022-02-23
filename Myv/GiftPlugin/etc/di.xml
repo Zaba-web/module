@@ -1,0 +1,6 @@
+<config>
+    <type name="\Magento\Checkout\Model\Cart">
+        <plugin name="Myv_GiftPlugin_add_to_cart" type="\Myv\GiftPlugin\Plugin\AddToCartPlugin" sortOrder="1" disabled="false" />
+        <plugin name="Myv_GiftPlugin_remove_from_cart" type="\Myv\GiftPlugin\Plugin\RemoveFromCartPlugin" sortOrder="1" disabled="false" />
+    </type>
+</config>

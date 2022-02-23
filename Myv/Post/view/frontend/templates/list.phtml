@@ -1,0 +1,52 @@
+<?php 
+    $posts = $block->getAllPosts()->getItems();
+?>
+
+<div>
+    <h2>List of posts</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publication date</th>
+            <th>Content</th>
+            <th>Operations</th>
+        </tr>
+        <?php 
+            foreach($posts as $post) {
+                ?>
+                <tr>
+                    <td><?=$post->getId()?></td>
+                    <td><?=$post->getTitle()?></td>
+                    <td><?=$post->getAuthor()?></td>
+                    <td><?=$post->getDate()?></td>
+                    <td><?=$post->getContentPreview()?></td>
+                    <td>
+                        <form 
+                            action='<?=$block->getUrl('posts/index/delete')?>' 
+                            method='POST'
+                        >
+                            <input 
+                                type='hidden' 
+                                name='id' 
+                                value='<?=$post->getID()?>'>
+                            <button>Delete</button>
+                        </form>
+                        <a href='<?=$block->getUrl('posts/index/getsingle', ['id' => $post->GetID()])?>'>
+                            <button>View</button>
+                        </a>
+                        <a href='<?=$block->getUrl('posts/index/edit', ['id' => $post->GetID()])?>'>
+                            <button>Edit</button>
+                        </a>
+                    </td>
+                </tr>
+        <?php
+            }
+        ?>
+    </table>
+    <br>
+    <a href="<?=$block->getUrl('posts/index/create')?>">
+        <button>Create new post</button>
+    </a>
+</div>

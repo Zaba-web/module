@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">posts_form.post_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Post Details</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <settings>
+        <buttons>
+            <button name="save" class="Myv\Post\Block\Adminhtml\Edit\SaveButton"/>
+        </buttons>
+        <namespace>posts_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>posts_form.post_form_data_source</dep>
+        </deps>
+    </settings>
+    
+    <dataSource name="post_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="posts/save/index"/>
+        </settings>
+        <dataProvider class="Myv\Post\Model\DataProvider" name="post_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+        <settings>
+            <label translate="true">Post Information</label>
+        </settings>
+
+        <field name="id" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+
+        <field name="publication_date" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>publication_date</dataScope>
+            </settings>
+        </field>
+
+        <field name="title" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>title</dataScope>
+                <label>Title: </label>
+            </settings>
+        </field>
+
+        <field name="author" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>author</dataScope>
+                <label>Author: </label>
+            </settings>
+        </field>
+
+       <field name="image" formElement="imageUploader">
+            <settings>
+                <label translate="true">Image: </label>
+                <componentType>imageUploader</componentType>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg png</allowedExtensions>
+                        <maxFileSize>2097152</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">posts/image/temp</param>
+                        </uploaderConfig>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+
+        <field name="content" formElement="textarea">
+            <settings>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>content</dataScope>
+                <label>Content: </label>
+            </settings>
+        </field>
+    </fieldset>
+</form>
