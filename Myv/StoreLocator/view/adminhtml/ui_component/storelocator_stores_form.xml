@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">storelocator_stores_form.store_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Store Details</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <settings>
+        <buttons>
+            <button name="save" class="Myv\StoreLocator\Block\Adminhtml\Edit\SaveButton"/>
+        </buttons>
+        <namespace>storelocator_stores_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>storelocator_stores_form.store_form_data_source</dep>
+        </deps>
+    </settings>
+    
+    <dataSource name="store_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="storelocator/save/index"/>
+        </settings>
+        <dataProvider class="Myv\StoreLocator\Model\DataProvider" name="store_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+        <settings>
+            <label translate="true">Store Information</label>
+        </settings>
+
+        <field name="id" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+
+        <field name="name" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>name</dataScope>
+                <label>Name: </label>
+            </settings>
+        </field>
+
+        <field name="latitude" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>float</dataType>
+                <visible>true</visible>
+                <dataScope>latitude</dataScope>
+                <label>Latitude: </label>
+            </settings>
+        </field>
+
+        <field name="longitude" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>float</dataType>
+                <visible>true</visible>
+                <dataScope>longitude</dataScope>
+                <label>Longitude: </label>
+            </settings>
+        </field>
+
+        <field name="open_time" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">8:00</item>
+                </item>
+            </argument>
+
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>open_time</dataScope>
+                <label>Open Time: </label>
+            </settings>
+        </field>
+
+        <field name="close_time" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">19:30</item>
+                </item>
+            </argument>
+
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>close_time</dataScope>
+                <label>Close Time: </label>
+            </settings>
+        </field>
+
+       <field name="image" formElement="imageUploader">
+            <settings>
+                <label translate="true">Image: </label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg png</allowedExtensions>
+                        <maxFileSize>2097152</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">storelocator/image/temp</param>
+                        </uploaderConfig>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+
+        <field name="description" formElement="textarea">
+            <settings>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>description</dataScope>
+                <label>Description: </label>
+            </settings>
+        </field>
+    </fieldset>
+</form>
