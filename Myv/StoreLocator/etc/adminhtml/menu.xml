@@ -1,0 +1,30 @@
+<config 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd"
+>
+    <menu>
+        <add 
+            id="Myv_StoreLocator::main" 
+            title="Store Locator" 
+            module="Myv_StoreLocator" 
+            sortOrder="42" 
+            resource="Myv_StoreLocator::general"
+        />
+            <add 
+                id="Myv_StoreLocator::store_list" 
+                title="Stores List" 
+                module="Myv_StoreLocator" 
+                resource="Myv_StoreLocator::general" 
+                parent="Myv_StoreLocator::main"
+                action="storelocator/overview/index"
+            />
+            <add 
+                id="Myv_StoreLocator::add"
+                title="Add Store"
+                module="Myv_StoreLocator"
+                resource="Myv_StoreLocator::general"
+                parent="Myv_StoreLocator::main"
+                action="storelocator/create/index"
+            />
+    </menu>
+</config>
